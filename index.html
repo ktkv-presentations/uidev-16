@@ -23,189 +23,588 @@
         <div class="reveal">
             <div class="slides">
                 <section>
-                    <h1>Beautiful presentations</h1>
-                    <h2>New features</h2>
-                    <ul>
-                        <li>Nerd icons </li>
-                        <li>
-                            <code class="js">
-                                (inline) => code("highlighting")
-                            </code>
-                        </li>
-                        <li>Automatic QR Code generation</li>
-                        <li>and much more!</li>
-                    </ul>
-                </section>
-                <section>
-                    <h1>CUSTOM TOKYONIGHT THEME</h1>
-                    <h2 class="fragment">THAT HAS</h2>
-                    <h3 class="fragment">MULTI</h3>
-                    <h4 class="fragment">LEVEL</h4>
-                    <h5 class="fragment">HEADING</h5>
-                    <h6 class="fragment">COLORS</h6>
-                    <h6>
-                        Thanks to this project
-                        <a
-                            href="https://github.com/tcmmichaelb139/obsidian-tokyonight">
-                            
-                        </a>
-                        for the colorscheme!
-                    </h6>
+                    <h1>Архитектура проекта</h1>
                 </section>
                 <section>
                     <section>
-                        <h1>Tailwind CSS</h1>
-                        <div class="grid grid-cols-2 gap-8">
-                            <div>
-                                <h5>Lorem, ipsum.</h5>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Error quod fugiat harum
-                                    modi laboriosam dignissimos, maxime
-                                    possimus? Error, nihil in.
-                                </p>
-                            </div>
-                            <div>
-                                <h5>Lorem, ipsum.</h5>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Error quod fugiat harum
-                                    modi laboriosam dignissimos, maxime
-                                    possimus? Error, nihil in.
-                                </p>
-                            </div>
-                            <div class="col-span-2">
-                                <h5>Lorem, ipsum.</h5>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Error quod fugiat harum
-                                    modi laboriosam dignissimos, maxime
-                                    possimus? Error, nihil in.
-                                </p>
-                            </div>
-                        </div>
-                    </section>
-                    <section>
-                        <h1>Custom classes</h1>
-                        <div class="grid grid-cols-3 gap-8">
-                            <div class="border-r">
-                                <h5>border-r</h5>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipisicing elit. Illum, soluta!
-                                </p>
-                            </div>
-                            <div class="border-o">
-                                <h5>border-o</h5>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipisicing elit. Illum, soluta!
-                                </p>
-                            </div>
-                            <div class="border-y">
-                                <h5>border-y</h5>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipisicing elit. Illum, soluta!
-                                </p>
-                            </div>
-                        </div>
-                    </section>
-                </section>
-                <section>
-                    <section data-auto-animate>
-                        <h1>New code highlighting!</h1>
-                        <div>
-                            Now also has Tokyo Night
-                            <code>highlight.js</code>
-                            highlighting implementation
-                        </div>
-                        <pre><code data-trim data-noescape>
-var foo = {
-    bar: function () {
-             alert("Hello, World!");
-         }
-};	
-					</code></pre>
-                    </section>
-                    <section data-auto-animate>
-                        <h1>New code highlighting!</h1>
-                        <h5>Inline code highlighting is now also supported!</h5>
+                        <h1>Архитектура</h1>
                         <p>
-                            Just wrap your code with
-                            <code>&lt;code&gt;</code>
-                            tag and get highlighting like this
-                            <code class="js">
-                                const foo = () => {return bar}
-                            </code>
-                            !
+                            система договорённостей внутри команды о том, как
+                            организован код: где лежат файлы, как они
+                            называются, как взаимодействуют между собой
+                        </p>
+                        <h4>Плюсы архитектуры</h4>
+                        <ul>
+                            <li>онбординг</li>
+                            <li>масштабируемость</li>
+                            <li>поддержка</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h1>Признаки плохой архитектуры</h1>
+                        <ul>
+                            <li>Файлы по 1000+ строк</li>
+                            <li>Перемешанные файлы</li>
+                            <li>Название не соответствуют шаблону</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>Паттерн</h1>
+                        <p>проверенный способ решить типичную задачу</p>
+                        <div class="border-b">
+                            выбор между ними зависит от размера проекта и
+                            команды
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>Flat Structure</h1>
+                        <h2>Плоская архитектура</h2>
+                        <p>все файлы лежат в одной папке</p>
+                        <h4>Подходят для:</h4>
+                        <ul>
+                            <li>лендинг на одну страницу</li>
+                            <li>учебное задание</li>
+                        </ul>
+                        <pre>
+project/
+├── index.html
+├── style.css
+└── script.js
+                        </pre>
+                    </section>
+                    <section>
+                        <h1>File Structure</h1>
+                        <h2>Разделение по типу файлов</h2>
+                        <p>
+                            файлы лежат по папкам согласно их расширению: всё
+                            <code>.css</code>
+                            в папку
+                            <code>css/</code>
+                            , всё
+                            <code>.js</code>
+                            в папку
+                            <code>js/</code>
+                            , все изображения в
+                            <code>images/</code>
+                        </p>
+                        <pre>
+project/
+├── index.html
+├── about.html
+├── css/
+│   ├── style.css
+│   └── responsive.css
+├── js/
+│   ├── main.js
+│   └── slider.js
+└── images/
+    ├── hero.jpg
+    └── logo.png
+                        </pre>
+                    </section>
+                    <section>
+                        <h1>Компонентный подход</h1>
+                        <p>Файлы группируются по функциональности</p>
+                        <pre>
+project/
+├── index.html
+├── components/
+│   ├── header/
+│   │   ├── header.html
+│   │   ├── header.css
+│   │   └── header.js
+│   ├── card/
+│   │   ├── card.html
+│   │   └── card.css
+│   └── footer/
+│       ├── footer.html
+│       └── footer.css
+├── pages/
+│   ├── about.html
+│   └── catalog.html
+└── assets/
+    └── images/
+</pre
+                        >
+                    </section>
+                    <section>
+                        <h1>FSD</h1>
+                        <h2>Feature Sliced Design</h2>
+                        <h4>По разделам</h4>
+                        <p>файлы лежат по бизнес-функции или разделу сайта</p>
+                        <pre>
+project/
+├── app/                ← инициализация, глобальные стили
+├── pages/              ← страницы целиком
+│   ├── home/
+│   └── catalog/
+├── features/           ← бизнес-функции
+│   ├── search/
+│   └── cart/
+├── entities/           ← бизнес-сущности (товар, пользователь)
+│   ├── product/
+│   └── user/
+└── shared/             ← переиспользуемое (кнопки, утилиты)
+    ├── ui/
+    └── utils/
+                        </pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>Методология CSS</h1>
+                        <p>
+                            соглашения по тому, как правильно называть классы,
+                            что помогает добиться логичной каскадности и
+                            избежать конфликтов
+                        </p>
+                    </section>
+                    <section>
+                        <h1>БЭМ</h1>
+                        <h4>Блок, Элемент, Модификатор</h4>
+                        <p>Разработан компанией Яндекс в середине 2000-х</p>
+                    </section>
+                    <section>
+                        <div
+                            style="
+                                display: grid;
+                                grid-template-columns: repeat(2, 1fr);
+                                gap: 1rem;
+                            ">
+                            <div class="border-b">
+                                <h4>Блок</h4>
+                                <p>
+                                    независимый компонент интерфейса, который
+                                    может существовать сам по себе
+                                </p>
+                                <ul>
+                                    <li><code>.card</code></li>
+                                    <li><code>.main-nav</code></li>
+                                    <li><code>.search-form</code></li>
+                                </ul>
+                            </div>
+                            <div class="border-b">
+                                <h4>Элемент</h4>
+                                <p>
+                                    составная часть блока, которая не имеет
+                                    смысла вне его
+                                </p>
+                                <ul>
+                                    <li><code>.card__title</code></li>
+                                    <li><code>.card__image</code></li>
+                                    <li><code>.main-nav__item</code></li>
+                                </ul>
+                            </div>
+                            <div style="grid-column: span 2" class="border-b">
+                                <h4>Модификатор</h4>
+                                <p>
+                                    вариация блока или элемента, изменяющая его
+                                    внешний вид или поведение
+                                </p>
+                                <ul>
+                                    <li><code>.card--featured</code></li>
+                                    <li>
+                                        <code>.main-nav__item--active</code>
+                                    </li>
+                                    <li><code>.button--large</code></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h1>Главное правило БЭМ -</h1>
+                        <h4>плоские классы без вложенности</h4>
+                        <hr />
+                        <h5>Так делать нельзя</h5>
+                        <pre><code data-trim class="css">
+.card .title { }
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="html">
+<div class="card card--featured">
+  <img class="card__image" src="photo.jpg" alt="Фото товара">
+  <div class="card__body">
+    <h2 class="card__title">Название товара</h2>
+    <p class="card__text">Краткое описание</p>
+    <button class="card__button card__button--primary">Купить</button>
+  </div>
+</div>
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>SMACSS</h1>
+                        <h4>Масштабируемая модульная архитектура CSS</h4>
+                        <p>способ организации CSS по категориям</p>
+                        <div
+                            style="
+                                display: grid;
+                                grid-template-columns: repeat(2, 1fr);
+                            ">
+                            <div class="border-b">
+                                <h5>Base</h5>
+                                <p>
+                                    базовые стили, применяемые к HTML-тегам
+                                    напрямую:
+                                </p>
+                                <p>
+                                    <code>body</code>
+                                    ,
+                                    <code>a</code>
+                                    ,
+                                    <code>h1-h6</code>
+                                </p>
+                            </div>
+                            <div class="border-b">
+                                <h5>Layout</h5>
+                                <p>
+                                    крупные структурные блоки страницы. принято
+                                    называть с префикса
+                                    <code>l-</code>
+                                </p>
+                                <p>
+                                    <code>l-header</code>
+                                    ,
+                                    <code>l-sidebar</code>
+                                    ,
+                                    <code>l-main</code>
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div
+                            style="
+                                display: grid;
+                                grid-template-columns: repeat(2, 1fr);
+                            ">
+                            <div class="border-b">
+                                <h5>Module</h5>
+                                <p>переиспользуемые компоненты интерфейса</p>
+                                <p>
+                                    <code>карточки</code>
+                                    ,
+                                    <code>кнопки</code>
+                                    ,
+                                    <code>формы</code>
+                                </p>
+                            </div>
+                            <div class="border-b">
+                                <h5>State</h5>
+                                <p>
+                                    состояния элементов. Начинаются с префикса
+                                    <code>is-</code>
+                                </p>
+                                <p>
+                                    <code>is-active</code>
+                                    ,
+                                    <code>is-hidden</code>
+                                    ,
+                                    <code>is-loading</code>
+                                </p>
+                            </div>
+                            <div style="grid-column: span 2">
+                                <div class="border-b">
+                                    <h5>Theme</h5>
+                                    <p>
+                                        переменные и правила, связанные с
+                                        темной/светлой темой
+                                    </p>
+                                    <pre><code class="css">
+:root {
+  --color-primary: #3b82f6;
+  --color-bg: #ffffff;
+  --color-text: #1f2937;
+}
+                                    </code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <pre>
+project/
+├── index.html
+├── css/
+│   ├── base.css        ← сброс стилей, html, body, типографика
+│   ├── layout.css      ← шапка, подвал, сетка, колонки
+│   ├── modules.css     ← карточки, кнопки, формы, слайдер
+│   ├── state.css       ← is-active, is-hidden, is-loading
+│   └── theme.css       ← цвета, шрифты (светлая / тёмная тема)
+├── js/
+│   └── main.js
+└── assets/
+    └── images/
+                        </pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>CSS переменные</h1>
+                        <p>
+                            именованные значения, которые задаются один раз и
+                            используются в любом месте таблицы стилей
+                        </p>
+                        <h3>Объявление</h3>
+                        <p>
+                            Внутри селектора
+                            <code>:root</code>
+                            указываются переменные начинаясь с двух префиксом
+                        </p>
+                        <pre><code data-trim class="css">
+:root {
+  --color-primary: #3b82f6;
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Применение</h3>
+                        <p>
+                            Используется внутри свойства через функцию
+                            <code>var()</code>
+                        </p>
+                        <pre><code data-trim class="css">
+.button {
+  background-color: var(--color-primary);
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h1>Пример</h1>
+                        <pre><code data-trim class="css">
+:root {
+  /* Цвета */
+  --color-primary:      #3b82f6;
+  --color-primary-dark: #2563eb;
+  --color-text:         #1f2937;
+  --color-text-muted:   #6b7280;
+  --color-bg:           #ffffff;
+  --color-border:       #e5e7eb;
+
+  /* Типографика */
+  --font-base:  'Inter', sans-serif;
+  --text-sm:    0.875rem;   /* 14px */
+  --text-base:  1rem;       /* 16px */
+  --text-lg:    1.125rem;   /* 18px */
+  --text-xl:    1.25rem;    /* 20px */
+
+  /* Отступы */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 40px;
+
+  /* Прочее */
+  --radius-sm:    4px;
+  --radius-md:    8px;
+  --shadow-card:  0 2px 8px rgba(0, 0, 0, 0.08);
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h1>Темы без JS</h1>
+                        <p>
+                            <code>:root</code>
+                            может выступать палитрой, которая будет зависеть от
+                            темы устройства
+                        </p>
+                        <pre><code data-trim class="css">
+:root {
+  --color-bg:   #ffffff;
+  --color-text: #1f2937;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg:   #111827;
+    --color-text: #f9fafb;
+  }
+}
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <h1>Utility-first CSS</h1>
+                    <p>
+                        используется набор маленьких классов, каждый из которых
+                        делает ровно одно действие
+                    </p>
+                    <pre><code data-trim class="html">
+&lt;div class="google-blue text-gray-100 hover:text-white shadow font-bold text-sm py-3 px-4 rounded flex justify-start items-center cursor-pointer w-64"&gt;
+    &lt;span class="pl-3"&gt;Sign up with Google&lt;/span&gt;
+&lt;/div&gt;
+                    </code></pre>
+                </section>
+                <section>
+                    <section>
+                        <h1>Структура папок</h1>
+                        <pre>
+project/
+│
+├── pages/                  ← HTML-страницы (кроме главной)
+│   ├── about.html
+│   ├── catalog.html
+│   └── contacts.html
+│
+├── components/             ← переиспользуемые части интерфейса
+│   ├── header/
+│   │   ├── header.css
+│   │   └── header.js
+│   ├── footer/
+│   │   └── footer.css
+│   ├── card/
+│   │   └── card.css
+│   └── modal/
+│       ├── modal.css
+│       └── modal.js
+│
+├── assets/                 ← статические файлы (не код)
+│   ├── images/
+│   ├── fonts/
+│   └── icons/
+│
+├── css/                    ← глобальные стили
+│   ├── reset.css
+│   ├── variables.css
+│   └── global.css
+│
+├── js/
+│   ├── main.js
+│   └── utils.js
+│
+└── index.html
+                        </pre>
+                    </section>
+                    <section>
+                        <h3><code>assets/</code></h3>
+                        <p>
+                            всё, что не является кодом: изображения, шрифты,
+                            иконки, видео, PDF-документы
+                        </p>
+                        <p>Можно создавать подпапки</p>
+                        <h4><code>assets/images/</code></h4>
+                        <p>
+                            изображения контента (фотографии товаров, аватары
+                            авторов)
+                        </p>
+                    </section>
+                    <section>
+                        <h3><code>components/</code></h3>
+                        <p>
+                            переиспользуемые блоки интерфейса, которые
+                            встречаются на нескольких страницах
+                        </p>
+                    </section>
+                    <section>
+                        <h3><code>pages/</code></h3>
+                        <p>
+                            сами HTML-файлы страниц, либо стили и скрипты,
+                            специфичные для конкретной страницы
                         </p>
                     </section>
                 </section>
                 <section>
-                    <h1>Mermaid for beautiful diagrams!</h1>
-                    <div class="mermaid">
-                        <pre>
-						erDiagram
-    CUSTOMER ||--o{ ORDER : ""
-    CUSTOMER {
-        string name
-        string custNumber
-        string sector
-    }
-    ORDER ||--|{ LINE-ITEM : contains
-    ORDER {
-        int orderNumber
-        string deliveryAddress
-    }
-    LINE-ITEM {
-        string productCode
-        int quantity
-        float pricePerUnit
-    }
-    ORDER ||--|{ STUDENT : contains
-    STUDENT {
-        int orderNumber
-        string deliveryAddress
-    }
-						</pre
-                        >
-                    </div>
-                    <h4>
-                        Check documentation
-                        <a href="https://mermaid.js.org/config/usage.html">
-                            here
-                        </a>
-                        !
-                    </h4>
+                    <section>
+                        <h1>Пути</h1>
+                        <p>адрес, по которому браузер ищет ресурс</p>
+                        <div
+                            style="
+                                display: grid;
+                                grid-template-columns: repeat(2, 1fr);
+                            ">
+                            <div class="border-b">
+                                <h4>Относительный путь</h4>
+                                <p>
+                                    отсчитывается от местоположения текущего
+                                    файла
+                                </p>
+                            </div>
+                            <div class="border-b">
+                                <h4>Абсолютный путь</h4>
+                                <p>
+                                    отсчитывается от корня сайта и начинается с
+                                    <code>/</code>
+                                </p>
+                            </div>
+                        </div>
+                        <pre><code data-trim class="html">
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="/css/style.css">
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h1>
+                            Правило
+                            <code>../</code>
+                        </h1>
+                        <p>
+                            Обозначает инструкцию подняться на одну папку вверх.
+                            Можно использовать несколько раз
+                        </p>
+                        <pre><code data-trim class="plaintext">
+../           — на один уровень вверх
+../../        — на два уровня вверх
+../images/    — вверх, затем в папку images/
+                        </code></pre>
+                    </section>
                 </section>
                 <section>
-                    <h1>Now supports Nerd font icons!</h1>
-                    <div>Nerdy project that adds icons to font itself</div>
-                    <h6>
-                        Checkout their site for icons like this
-                        <a href="https://www.nerdfonts.com/">󰖟</a>
-                        !
-                    </h6>
+                    <section>
+                        <h1>Работа с многостраничными сайтами</h1>
+                        <div class="border-r">
+                            У HTML нет встроенного механизма включения одного
+                            файла в другой
+                        </div>
+                    </section>
                 </section>
                 <section>
-                    <h1>Now supports automatic QRCode generation!</h1>
-                    <div>
-                        With GoQR you can just add data-type and alt attributes
-                        to your
-                        <code class="html">
-                            &lt;img src="https://goqr.me/" data-type="qrcode" /
-                            &gt;
-                        </code>
-                        tag!
-                    </div>
-                    <img
-                        class="r-stretch"
-                        src="https://goqr.me/"
-                        data-type="qrcode" />
-                </section>
-                <section>
-                    <h1>New changes on the way!</h1>
+                    <section>
+                        <h1>Git</h1>
+                        <h4><code>.gitignore</code></h4>
+                        <p>
+                            сообщает Git, какие файлы и папки следует
+                            игнорировать
+                        </p>
+                        <h4>Чаще всего игнорируются</h4>
+                        <ul>
+                            <li>
+                                <code>node_modules/</code>
+                                - папка с зависимостями npm
+                            </li>
+                            <li>
+                                <code>.env</code>
+                                — файлы с переменными окружения, API-ключами,
+                                паролями
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h1>Readme</h1>
+                        <h4><code>README.md</code></h4>
+                        <p>
+                            документация, визитная карточка и инструкция по
+                            эксплуатации
+                        </p>
+                        <ul>
+                            <li>
+                                Можно писать в формате Markdown (
+                                <code>.md</code>
+                                )
+                            </li>
+                            <li>
+                                Внутри можно применять некоторые теги
+                                <code>HTML</code>
+                            </li>
+                        </ul>
+                    </section>
                 </section>
             </div>
         </div>
@@ -396,4 +795,3 @@ var foo = {
         </script>
     </body>
 </html>
-
