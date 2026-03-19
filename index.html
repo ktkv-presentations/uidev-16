@@ -563,6 +563,12 @@ project/
                             У HTML нет встроенного механизма включения одного
                             файла в другой
                         </div>
+                        <p>Варианты решения проблемы:</p>
+                        <ul>
+                            <li>Повторение кода</li>
+                            <li>Генерирование с помощью JS</li>
+                            <li>Использование фреймворков</li>
+                        </ul>
                     </section>
                 </section>
                 <section>
@@ -604,6 +610,177 @@ project/
                                 <code>HTML</code>
                             </li>
                         </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>Code style</h1>
+                        <p>
+                            набор соглашений о том, как выглядит код: отступы,
+                            пробелы, кавычки, порядок свойств, именование
+                            переменных
+                        </p>
+                        <pre><code data-trim class="js">
+function GetDATA(user_id,UserName){
+	let resultData = []
+    var temp_value=0;
+
+	if(user_id&gt;0){
+      for(let i=0;i&lt;10;i++){
+	  	resultData.push({ID:i, user_name:UserName, val:temp_value+i})
+        }
+	}else{
+    for ( let J = 0; J &lt; 5;J++ ){
+			resultData.push({id:J,UserName:UserName,value: J*2})
+		}
+	}
+
+	return resultData
+}
+
+const my_array = [1,2,3,4]
+
+for(let index=0;index&lt;my_array.length; index++){
+	console.log(my_array[index])
+}
+
+let AnotherVar = 5
+let another_var=10
+let ANOTHERvar = 15
+
+function doStuff(){
+  console.log("doing stuff")
+	 console.log("more stuff")
+    console.log("even more stuff")
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h1>Гайдлайны для читаемого кода</h1>
+                        <div
+                            style="
+                                display: grid;
+                                gap: 1rem;
+                                grid-template-columns: repeat(2, 1fr);
+                            ">
+                            <div class="border-b">
+                                <h4>Отступы</h4>
+                                <p>
+                                    2 или 4 пробела
+                                    <strong>во всем проекте</strong>
+                                </p>
+                            </div>
+                            <div class="border-b">
+                                <h4>Длина строки</h4>
+                                <p>не длиннее 80–100 символов</p>
+                            </div>
+                            <div class="border-b" style="grid-column: span 2">
+                                <h4>Пустые строки</h4>
+                                <p>
+                                    разделяйте логические блоки кода пустой
+                                    строкой
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h1>Именование</h1>
+                        <p>
+                            В CSS должна быть структура по типу BEM, а в JS
+                            <code>camelCase</code>
+                        </p>
+                        <h4>camelCase</h4>
+                        <p>
+                            Первое слово строчное, каждое следующее начинается с
+                            заглавной буквы
+                        </p>
+                        <pre><code data-trim class="plaintext">
+my variable  →  myVariable
+get user name  →  getUserName
+card background color  →  cardBackgroundColor
+                        </code></pre>
+                        <h5>При пересечении названия класса и переменной</h5>
+                        <pre><code data-trim class="plaintext">
+.buy-button  {} →  const buyButton =
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>Инструменты</h1>
+                        <h3>Форматтер</h3>
+                        инструмент, который автоматически приводит код к единому
+                        визуальному стилю
+                        <h4>Prettier</h4>
+                        <p>самый популярный форматтер для веб-разработки</p>
+                        <div class="border-b">
+                            В VSCode запускается кнопками
+                            <code>ALT + Shift + F</code>
+                        </div>
+                    </section>
+                    <section>
+                        <div
+                            style="
+                                display: flex;
+                                flex-direction: column;
+                                gap: 1rem;
+                            ">
+                            <div class="border-r">
+                                <h4>До</h4>
+                                <pre><code data-trim class="js">
+const user={name:'Иван',age:25,city:'Москва'}
+function greet(user){return 'Привет, '+user.name+'! Тебе '+user.age+' лет'}
+                                </code></pre>
+                            </div>
+                            <div class="border-g">
+                                <h4>После</h4>
+                                <pre><code data-trim class="js">
+const user = { name: 'Иван', age: 25, city: 'Москва' };
+function greet(user) {
+  return 'Привет, ' + user.name + '! Тебе ' + user.age + ' лет';
+}
+                                </code></pre>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h1>Линтер</h1>
+                        <p>инструмент статического анализа кода</p>
+                        <div
+                            style="
+                                display: grid;
+                                grid-template-columns: repeat(2, 1fr);
+                            ">
+                            <div class="border-b">
+                                <h4>ESLint</h4>
+                                <p>линтер для JavaScript</p>
+                                <pre><code data-trim class="json">
+// .eslintrc.json — правила проверки JS
+{
+  "rules": {
+    "no-var": "error",           // запрет var — это ошибка
+    "no-unused-vars": "warn",    // неиспользуемая переменная — предупреждение
+    "prefer-const": "warn",      // предлагает заменить let на const
+    "no-console": "warn"         // предупреждает о забытых console.log
+  }
+}
+                                </code></pre>
+                            </div>
+                            <div class="border-b">
+                                <h4>Stylelint</h4>
+                                <p>линтер для JavaScript</p>
+                                <pre><code data-trim class="json">
+// .stylelintrc.json — правила проверки CSS
+{
+  "rules": {
+    "no-duplicate-properties": true,   // запрет дублирующихся свойств
+    "color-no-invalid-hex": true,      // запрет неверных hex-цветов
+    "property-no-unknown": true        // запрет несуществующих свойств
+  }
+}
+                                </code></pre>
+                            </div>
+                        </div>
                     </section>
                 </section>
             </div>
